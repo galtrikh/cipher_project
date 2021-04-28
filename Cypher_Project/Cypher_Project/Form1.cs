@@ -147,8 +147,6 @@ namespace Cypher_Project
 			'0',
 		};
 
-		public static int[] UsesOfLetters = new int[Alphabet.Length];
-
 		public static string Key = "";
 
 		public Form1()
@@ -182,28 +180,40 @@ namespace Cypher_Project
 
 			if (betterCipher_checkBox.Checked)
 			{
-
-				for (int i = 0; i < TextFromFile.Length; i++)
+				for(int i = 0; i < TextFromFile.Length; i++)
 				{
 					for (int j = 0; j < Alphabet.Length; j++)
 					{
-						if (TextFromFile[i] == Alphabet[j])
+						if (Alphabet.Contains(TextFromFile[i]))
 						{
-							if (UsesOfLetters[j] == 0)
+							if (TextFromFile[i] == Alphabet[j])
 							{
-								CiferedCezarText += Alphabet[j + Move1];
-								UsesOfLetters[j]++;
+								try
+								{
+									CiferedCezarText += Alphabet[Alphabet.Length - j].ToString();
+								}
+								catch
+								{
+									CiferedCezarText += Alphabet[Alphabet.Length - 1 - j].ToString();
+								}
+								break;
 							}
-							else if (UsesOfLetters[j] == 1)
+						}
+						else
+						{
+							if (TextFromFile[i] == ' ')
 							{
-								CiferedCezarText += Alphabet[j + Move2];
-								UsesOfLetters[j]++;
+								CiferedCezarText += " ";
 							}
-							else if (UsesOfLetters[j] == 2)
+							else if (TextFromFile[i] == '\n')
 							{
-								CiferedCezarText += Alphabet[j + Move3];
-								UsesOfLetters[j] = 0;
+								CiferedCezarText += '\n';
 							}
+							else
+							{
+								CiferedCezarText += TextFromFile[i];
+							}
+							break;
 						}
 					}
 				}
@@ -215,9 +225,29 @@ namespace Cypher_Project
 				{
 					for (int j = 0; j < Alphabet.Length; j++)
 					{
-						if (TextFromFile[i] == Alphabet[j])
+						if (Alphabet.Contains(TextFromFile[i]))
 						{
-							CiferedCezarText += Alphabet[j + Move1];
+							if (TextFromFile[i] == Alphabet[j])
+							{
+								CiferedCezarText += Alphabet[j + Move1];
+								break;
+							}
+						}
+						else
+						{
+							if (TextFromFile[i] == ' ')
+							{
+								CiferedCezarText += " ";
+							}
+							else if (TextFromFile[i] == '\n')
+							{
+								CiferedCezarText += '\n';
+							}
+							else
+							{
+								CiferedCezarText += TextFromFile[i];
+							}
+							break;
 						}
 					}
 				}
@@ -225,11 +255,8 @@ namespace Cypher_Project
 			}
 
 			saveFileDialog1.ShowDialog();
-			File.WriteAllText(saveFileDialog1.FileName, CiferedCezarText);
-			for(int i = 0; i < UsesOfLetters.Length; i++)
-			{
-				Key += $"-{UsesOfLetters[i]}";
-			}
+			if(saveFileDialog1.FileName.Contains(".txt")) File.WriteAllText(saveFileDialog1.FileName, CiferedCezarText);
+			else File.WriteAllText(saveFileDialog1.FileName + ".txt", CiferedCezarText);
 			Key_textBox_c.Text = Key;
 		}
 
@@ -250,40 +277,35 @@ namespace Cypher_Project
 			Key = Key_textBox_dec.Text;
 			string TextFromFile = File.ReadAllText(Path_textBox_dec.Text);
 			string DeciferedCezarText = "";
-			int[] UsesOfLettersDec = new int[Alphabet.Length];
-			int TempVar0 = 0;
 			if (Key[6] == 'B')
 			{
-
-				for (int i = 7; i < Key.Length; i++)
-				{
-					if(Key[i] != '-')
-					{
-						UsesOfLettersDec[TempVar0] = Key[i];
-						TempVar0++;
-					}
-				}
-
 				for (int i = 0; i < TextFromFile.Length; i++)
 				{
 					for (int j = 0; j < Alphabet.Length; j++)
 					{
-						if (TextFromFile[i] == Alphabet[j])
+						if (Alphabet.Contains(TextFromFile[i]))
 						{
-							if (UsesOfLetters[j] == 0)
+							if (TextFromFile[i] == Alphabet[j])
 							{
-								DeciferedCezarText += Alphabet[j - Convert.ToInt32(Key[1]) + 48];
+								DeciferedCezarText += Alphabet[Alphabet.Length - j].ToString();
+								break;
 							}
-							else if (UsesOfLetters[j] == 1)
+						}
+						else
+						{
+							if (TextFromFile[i] == ' ')
 							{
-								DeciferedCezarText += Alphabet[j - Convert.ToInt32(Key[3]) + 48];
-								UsesOfLettersDec[j]--;
+								DeciferedCezarText += " ";
 							}
-							else if (UsesOfLetters[j] == 2)
+							else if (TextFromFile[i] == '\n')
 							{
-								DeciferedCezarText += Alphabet[j - Convert.ToInt32(Key[5]) + 48];
-								UsesOfLettersDec[j]--;
+								DeciferedCezarText += '\n';
 							}
+							else
+							{
+								DeciferedCezarText += TextFromFile[i];
+							}
+							break;
 						}
 					}
 				}
@@ -294,14 +316,35 @@ namespace Cypher_Project
 				{
 					for (int j = 0; j < Alphabet.Length; j++)
 					{
-						if (TextFromFile[i] == Alphabet[j])
+						if (Alphabet.Contains(TextFromFile[i]))
 						{
-							DeciferedCezarText += Alphabet[j - Convert.ToInt32(Key[1]) + 48];
+							if (TextFromFile[i] == Alphabet[j])
+							{
+								DeciferedCezarText += Alphabet[j - Convert.ToInt32(Key[1]) + 48];
+								break;
+							}
+						}
+						else
+						{
+							if (TextFromFile[i] == ' ')
+							{
+								DeciferedCezarText += " ";
+							}
+							else if (TextFromFile[i] == '\n')
+							{
+								DeciferedCezarText += '\n';
+							}
+							else
+							{
+								DeciferedCezarText += TextFromFile[i];
+							}
+							break;
 						}
 					}
 				}
 			}
-			Path_textBox_dec.Text = DeciferedCezarText;
+			saveFileDialog1.ShowDialog();
+			File.WriteAllText(saveFileDialog1.FileName, DeciferedCezarText);
 		}
 
 		#endregion
