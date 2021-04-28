@@ -72,6 +72,7 @@
 			this.Decipher_button.TabIndex = 1;
 			this.Decipher_button.Text = "Дешифровать";
 			this.Decipher_button.UseVisualStyleBackColor = true;
+			this.Decipher_button.Click += new System.EventHandler(this.Decipher_button_Click);
 			// 
 			// cypher_button
 			// 
@@ -162,6 +163,7 @@
 			this.Dicipher_openFile_button.TabIndex = 10;
 			this.Dicipher_openFile_button.Text = "Обзор";
 			this.Dicipher_openFile_button.UseVisualStyleBackColor = true;
+			this.Dicipher_openFile_button.Click += new System.EventHandler(this.Dicipher_openFile_button_Click);
 			// 
 			// Key_textBox_dec
 			// 
