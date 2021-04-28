@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -166,6 +161,7 @@ namespace Cypher_Project
 
 		private void cypher_button_Click(object sender, EventArgs e)
 		{
+
 			string TextFromFile = File.ReadAllText(Path_textBox_c.Text);
 
 			Random rand = new Random();
@@ -357,7 +353,7 @@ namespace Cypher_Project
 			Help_label.Location = new Point(10, 10);
 			Help_Form.Controls.Add(Help_label);
 			Help_label.AutoSize = true;
-			Help_label.Text = File.ReadAllText("help.txt"); //Help text set's at here <<<
+			Help_label.Text = global::Cypher_Project.Properties.Resources.help; //Help text set's at here <<<
 			Help_Form.ShowIcon = false;
 			Help_Form.MinimumSize = new Size(200, 100);
 			Help_Form.MinimizeBox = false;

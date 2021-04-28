@@ -1,0 +1,9 @@
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\bin\x64\Release\Cypher_Project.exe.config
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\bin\x64\Release\Cypher_Project.exe
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\bin\x64\Release\Cypher_Project.pdb
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\obj\x64\Release\Cypher_Project.Form1.resources
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\obj\x64\Release\Cypher_Project.Properties.Resources.resources
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\obj\x64\Release\Cypher_Project.csproj.GenerateResource.cache
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\obj\x64\Release\Cypher_Project.csproj.CoreCompileInputs.cache
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\obj\x64\Release\Cypher_Project.exe
+C:\Users\koval\source\repos\Cypher_Project\Cypher_Project\obj\x64\Release\Cypher_Project.pdb
