@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.betterCipher_checkBox = new System.Windows.Forms.CheckBox();
+			this.Decipher_button = new System.Windows.Forms.Button();
 			this.cypher_button = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.help_button = new System.Windows.Forms.Button();
@@ -39,7 +39,7 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
+			this.Dicipher_openFile_button = new System.Windows.Forms.Button();
 			this.Key_textBox_dec = new System.Windows.Forms.TextBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.label4 = new System.Windows.Forms.Label();
@@ -54,24 +54,24 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// checkBox1
+			// betterCipher_checkBox
 			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(6, 69);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(143, 17);
-			this.checkBox1.TabIndex = 0;
-			this.checkBox1.Text = "Улучшенная шифровка";
-			this.checkBox1.UseVisualStyleBackColor = true;
+			this.betterCipher_checkBox.AutoSize = true;
+			this.betterCipher_checkBox.Location = new System.Drawing.Point(6, 69);
+			this.betterCipher_checkBox.Name = "betterCipher_checkBox";
+			this.betterCipher_checkBox.Size = new System.Drawing.Size(143, 17);
+			this.betterCipher_checkBox.TabIndex = 0;
+			this.betterCipher_checkBox.Text = "Улучшенная шифровка";
+			this.betterCipher_checkBox.UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// Decipher_button
 			// 
-			this.button1.Location = new System.Drawing.Point(235, 95);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(100, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Дешифровать";
-			this.button1.UseVisualStyleBackColor = true;
+			this.Decipher_button.Location = new System.Drawing.Point(235, 95);
+			this.Decipher_button.Name = "Decipher_button";
+			this.Decipher_button.Size = new System.Drawing.Size(100, 23);
+			this.Decipher_button.TabIndex = 1;
+			this.Decipher_button.Text = "Дешифровать";
+			this.Decipher_button.UseVisualStyleBackColor = true;
 			// 
 			// cypher_button
 			// 
@@ -125,10 +125,10 @@
 			// 
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.button2);
+			this.groupBox1.Controls.Add(this.Dicipher_openFile_button);
 			this.groupBox1.Controls.Add(this.Key_textBox_dec);
 			this.groupBox1.Controls.Add(this.Path_textBox_dec);
-			this.groupBox1.Controls.Add(this.button1);
+			this.groupBox1.Controls.Add(this.Decipher_button);
 			this.groupBox1.Location = new System.Drawing.Point(12, 182);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(341, 154);
@@ -154,14 +154,14 @@
 			this.label1.TabIndex = 11;
 			this.label1.Text = "Путь до зашифрованного файла";
 			// 
-			// button2
+			// Dicipher_openFile_button
 			// 
-			this.button2.Location = new System.Drawing.Point(235, 45);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 10;
-			this.button2.Text = "Обзор";
-			this.button2.UseVisualStyleBackColor = true;
+			this.Dicipher_openFile_button.Location = new System.Drawing.Point(235, 45);
+			this.Dicipher_openFile_button.Name = "Dicipher_openFile_button";
+			this.Dicipher_openFile_button.Size = new System.Drawing.Size(75, 23);
+			this.Dicipher_openFile_button.TabIndex = 10;
+			this.Dicipher_openFile_button.Text = "Обзор";
+			this.Dicipher_openFile_button.UseVisualStyleBackColor = true;
 			// 
 			// Key_textBox_dec
 			// 
@@ -178,7 +178,7 @@
 			this.groupBox2.Controls.Add(this.Path_textBox_c);
 			this.groupBox2.Controls.Add(this.cypher_button);
 			this.groupBox2.Controls.Add(this.button3);
-			this.groupBox2.Controls.Add(this.checkBox1);
+			this.groupBox2.Controls.Add(this.betterCipher_checkBox);
 			this.groupBox2.Location = new System.Drawing.Point(12, 31);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(319, 145);
@@ -235,8 +235,8 @@
 		#endregion
 
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.CheckBox betterCipher_checkBox;
+		private System.Windows.Forms.Button Decipher_button;
 		private System.Windows.Forms.Button cypher_button;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button help_button;
@@ -248,7 +248,7 @@
 		private System.Windows.Forms.TextBox Key_textBox_c;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button Dicipher_openFile_button;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;

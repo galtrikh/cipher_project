@@ -13,10 +13,6 @@ namespace Cypher_Project
 {
 	public partial class Form1 : Form
 	{
-		public Form1()
-		{
-			InitializeComponent();
-		}
 
 		public static char[] Alphabet = {
 			'A',
@@ -205,7 +201,7 @@ namespace Cypher_Project
 			"00110001",
 			"00110010",
 			"00110011",
-			
+
 			"00110100",
 			"00110101",
 			"00110110",
@@ -286,42 +282,163 @@ namespace Cypher_Project
 			"01111111"
 		};
 
+		public static int[] UsesOfLetters = new int[Alphabet.Length];
+
 		public static string CypheredBinaryEnum = "";
+
+		public static string CipheredText = "";
+
+		public static string Key = "";
+
+		public Form1()
+		{
+			InitializeComponent();
+		}
+
+		#region Cipher
+
 		private void button3_Click(object sender, EventArgs e)
 		{
 			openFileDialog1.FileName = "";
 			openFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt|Word Документы (*.doc)|*.doc|Word Документы (*.docx)|*.docx";
 			openFileDialog1.ShowDialog();
 			Path_textBox_c.Text = openFileDialog1.FileName;
-			Key_textBox_c.Text = $"{File.ReadAllText(Path_textBox_c.Text).Length}";
 		}
 
 		private void cypher_button_Click(object sender, EventArgs e)
 		{
 			string TextFromFile = File.ReadAllText(Path_textBox_c.Text);
 
-			Form Form2 = new Form();
-			Form2.Text = "TEXT";
-			Form2.Show();
-			Label label1 = new Label();
-			label1.Location = new Point(10, 10);
-			Form2.Controls.Add(label1);
-			label1.AutoSize = true;
-			label1.Text = TextFromFile;
+			Random rand = new Random();
 
-			for (int i = 0; i < TextFromFile.Length; i++)
+			int Move1 = rand.Next(1, 8);
+			int Move2 = rand.Next(1, 8);
+			int Move3 = rand.Next(1, 8);
+
+			Key += $"F{Move1}S{Move2}T{Move3}";
+
+			string CiferedCezarText = "";
+
+			if (betterCipher_checkBox.Checked)
+			{
+
+				for (int i = 0; i < TextFromFile.Length; i++)
+				{
+					for (int j = 0; j < Alphabet.Length; j++)
+					{
+						if (TextFromFile[i] == Alphabet[j])
+						{
+							if (UsesOfLetters[j] == 0)
+							{
+								CiferedCezarText += Alphabet[j + Move1];
+								UsesOfLetters[j]++;
+							}
+							else if (UsesOfLetters[j] == 1)
+							{
+								CiferedCezarText += Alphabet[j + Move2];
+								UsesOfLetters[j]++;
+							}
+							else if (UsesOfLetters[j] == 2)
+							{
+								CiferedCezarText += Alphabet[j + Move3];
+								UsesOfLetters[j] = 0;
+							}
+						}
+					}
+				}
+				Key += "B";
+			}
+			else
+			{
+				CiferedCezarText = TextFromFile;
+				Key += "N";
+			}
+
+			for (int i = 0; i < CiferedCezarText.Length; i++)
 			{
 				for (int j = 0; j < Alphabet.Length; j++)
 				{
-					if (TextFromFile[i] == Alphabet[j])
+					if (CiferedCezarText[i] == Alphabet[j])
 					{
 						CypheredBinaryEnum += binaryCodes[j];
 					}
 				}
-				
 			}
-			label1.Text = CypheredBinaryEnum;
+			string CipherFile = File.ReadAllText("cipher_text.txt");
+			for (int i = 0; i < CypheredBinaryEnum.Length; i++)
+			{
+				for(int j = 0; j < Alphabet.Length - 10; j++)
+				{
+					if (Alphabet.Contains(CipherFile[i]))
+					{
+						if (CipherFile[i] == Alphabet[j])
+						{
+							if (CypheredBinaryEnum[i] == '0')
+							{
+								if (j >= 0 && j <= 26)
+								{
+									CipheredText += Alphabet[j + 26];
+								}
+								else if (j >= 53 && j <= 84)
+								{
+									CipheredText += Alphabet[j + 33];
+								}
+								else
+								{
+									CipheredText += Alphabet[j];
+								}
+								break;
+							}
+							else if (CypheredBinaryEnum[i] == '1')
+							{
+								if (j >= 27 && j <= 52)
+								{
+									CipheredText += Alphabet[j];
+									var To16Var = Convert.ToInt32(i.ToString(), 10);
+									Key += $"0x{To16Var.ToString("x")}";
+								}
+								else if (j >= 85 && j <= 118)
+								{
+									CipheredText += Alphabet[j];
+									var To16Var = Convert.ToInt32(i.ToString(), 10);
+									Key += $"0x{To16Var.ToString("x")}";
+								}
+								else
+								{
+									CipheredText += Alphabet[j];
+								}
+								break;
+							}
+						}
+					}
+					else
+					{
+						if(CipherFile[i] == ' ')
+						{
+							CipheredText += " ";
+						}
+						else if (CipherFile[i] == '\n')
+						{
+							CipheredText += "\n";
+						}
+						break;
+					}
+				}
+			}
+			Key_textBox_c.Text = Key;
+
+			saveFileDialog1.ShowDialog();
+			if(saveFileDialog1.FileName.Contains(".txt"))File.WriteAllText(saveFileDialog1.FileName, CipheredText);
+			else File.WriteAllText($"{saveFileDialog1.FileName}.txt", CipheredText);
 		}
+
+		#endregion
+
+		#region Decipher
+
+
+
+		#endregion
 
 		private void help_button_Click(object sender, EventArgs e)
 		{
